@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   get "/" => "static_pages#home"
   resources :books
   devise_for :users
