@@ -1,6 +1,10 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user! do |c|
+    if !authenticate_user! 
+      redirect_to "/"
+    end
+  end
   # GET /books or /books.json
   def index
     @books = Book.all
@@ -8,9 +12,7 @@ class BooksController < ApplicationController
 
   # GET /books/1 or /books/1.json
   def show
-    if !authenticate_user! 
-      redirect_to "/"
-    end
+    @book_review = BookReview.new
   end
 
   # GET /books/new

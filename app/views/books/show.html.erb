@@ -8,3 +8,16 @@
 
   <%= button_to "Destroy this book", @book, method: :delete %>
 </div>
+
+<%= form_with(model: @book_review) do |form| %>
+  <h2>Review Form</h2>
+  <div>
+    <%= form.label :review, style: "display: block" %>
+    <%= form.text_area :review %>
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+    <%= form.hidden_field :book_id, :value => @book.id %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
