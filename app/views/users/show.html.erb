@@ -1,5 +1,27 @@
-<h1>Users#show</h1>
-<p>Email</p>
-<%= current_user.email %>
-<%= current_user.image.attached? ? image_tag(current_user.image) : "" %>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container h-100 w-100 d-flex flex-column justify-content-center align-items-center">
+    <div class="row">
+        <h1 class="title">
+            User information
+        </div>
+    </div>
+    <div class="row w-60 h-75">
+        <div class="col-md-4">
+            <% if current_user.image.attached? %>
+                <%= image_tag current_user.image , class: "w-100 h-100" %>
+            <% else %>
+                <%= image_tag "user.png" , class: "w-100 h-100" %>
+            <% end %>
+        </div>
+        <div class="col-md-8 p-5">
+            <div class="w-100 h2 mb-5">
+                Name: <%= current_user.name ? current_user.name : "" %>
+            </div>
+            <div class="w-100 h2 mb-5">
+                Age: <%= current_user.age ? current_user.age : "" %>
+            </div>
+            <div class="w-100 h2">
+                Email: <%= current_user.email %>
+            </div>
+        </div>
+    </div>
+</div>

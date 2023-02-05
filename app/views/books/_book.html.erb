@@ -1,22 +1,18 @@
 <div id="<%= dom_id book %>">
-  <p>
-    <strong>Title:</strong>
-    <%= book.title %>
-  </p>
-
-  <p>
-    <strong>Number of pages:</strong>
-    <%= book.number_of_pages %>
-  </p>
-
-  <p>
-    <strong>Detail of pages:</strong>
-    <%= book.detail %>
-  </p>
-
-  <p>
-    <strong>Image:</strong>
-    <%= book.image.attached? ? image_tag(book.image) : "" %>
-  </p>
-
+  <div class="card" style="width: 18rem;">
+    <% if book.image.attached? %>
+      <%= image_tag (book.image), class: "card-img-top", style: "height: 9rem" %>
+    <% else %>
+      <%= image_tag "book.jpg", class: "card-img-top", style: "height: 9rem" %>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title">Book title:</h5>
+      <p class="card-text"><%= book.title ? book.title : "No title" %></p>
+      <h5 class="card-title">Number of pages:</h5>
+      <p class="card-text"><%= book.number_of_pages ? book.number_of_pages : "0" %></p>
+      <h5 class="card-title">Book Detail</h5>
+      <p class="card-text"> <%= book.detail ? book.detail : "No detail" %></p>
+      <%= link_to "Show this book", book, class: "btn btn-primary" %>
+    </div>
+  </div>
 </div>
