@@ -1,0 +1,1 @@
+web: rake db:migrate && npm i && bin/rails server -b 0.0.0.0 -p {PORT: -3000}
